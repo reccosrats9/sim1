@@ -26,7 +26,7 @@ componentDidMount(){
     return (
       <div >
         <Header />
-        <Dashboard inventory={inventory} />
+        <Dashboard inventory={inventory} mountedInventory={this.componentDidMount} />
         <Form inventoryGetAll={this.componentDidMount}/>
       </div>
     )

@@ -6,10 +6,15 @@ module.exports={
     )    },
 
     createProduct:(req,res)=>{
-        // req.app.post('db').add_product()
        let  {name, price, img} = req.body;
        req.app.get('db').add_product(name, price, img)
        .then(()=>res.sendStatus(200) )
     },
+
+    deleteProduct:(req, res)=>{
+        let{id}=req.params
+        req.app.get('db').delete_product(id)
+        .then( ()=>res.sendStatus(200) )
+    }
 
 }

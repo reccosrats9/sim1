@@ -8,7 +8,7 @@ export default class Dashboard extends Component{
 
         return(
             <div>
-                { inventory.map( (product, i)=><Product key={'product' + i} name={inventory[i].name} price={inventory[i].price} image={inventory[i].image} /> ) }
+                { inventory.map( (product, i)=><Product key={'productindex' + i} name={inventory[i].name} price={inventory[i].price} image={inventory[i].image} /> ) }
             </div>
         )
     }

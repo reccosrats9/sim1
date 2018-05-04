@@ -17,7 +17,7 @@ massive(process.env.CONNECTION_STRING).then(dbInstance=>{
 
 
 app.get('/api/inventory', controller.getInventory)
-
+app.post('/api/product',controller.createProduct)
 
 
 app.listen(port, ()=>console.log(`Listening on port ${port}`))

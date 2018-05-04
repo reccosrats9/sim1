@@ -17,6 +17,12 @@ module.exports={
         let{id}=req.params
         req.app.get('db').delete_product(id)
         .then( ()=>res.sendStatus(200) )
+    },
+
+    edit: (req, res)=>{
+        let {id, name, price, img}=req.params
+        req.app.get('db').update_product([id, name, price, img])
+        .then( (newProduct)=>res.status(200).send(newProduct) )
     }
 
 }

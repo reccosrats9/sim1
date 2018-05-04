@@ -8,7 +8,9 @@ export default class Form extends Component{
         this.state={
             name:'',
             price:0,
-            img:''
+            img:'',
+            currentID: null
+
         }
         this.handleChangeName= this.handleChangeName.bind(this)
         this.handleChangePrice= this.handleChangePrice.bind(this)
@@ -45,6 +47,12 @@ export default class Form extends Component{
             price: 0,
             img: ''
     })
+    }
+
+    componentDidUpdate(prevProps){
+        if (prevProps!== this.props.currentProduct){
+            // this.setState({currentID: this.props.currentProduct})
+        }
     }
 
 

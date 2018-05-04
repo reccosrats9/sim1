@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import './Form.css'
 
 export default class Form extends Component{
     constructor(){
@@ -7,7 +8,7 @@ export default class Form extends Component{
         this.state={
             name:'',
             price:0,
-            imgurl:''
+            img:''
         }
         this.handleChangeName= this.handleChangeName.bind(this)
         this.handleChangePrice= this.handleChangePrice.bind(this)
@@ -17,39 +18,43 @@ export default class Form extends Component{
     }
 
     handleChangeName(e) {
+        // console.log(this.state.name)
         this.setState({name: e.target.value})
     }
 
     handleChangePrice(e){
+        // console.log(this.state.price)
         this.setState({price: e.target.value})
     }
 
     handleChangeImg(e){
-        this.setState({imgurl: e.target.value})
+        this.setState({img: e.target.value})
+        // console.log(this.state.img)
     }
 
     postProduct(){
-        axios.post('/api/product/').then(()=>
+        console.log(this.state)
+        let newItem= this.state;
+        axios.post('/api/product/',{newItem}).then(()=>
         this.props.inventoryGetAll())
-        this.clearInputBoxes()
     }
 
-    clearInputBoxes(e){
+    clearInputBoxes(){
         this.setState({
             name:'',
             price: 0,
-            imgurl:''
-        })
+            img: ''
+    })
     }
 
 
     render(){
         return(
-            <div>
-                <p>Image URL: <input onChange= {this.handleChangeImg} /></p>
-                <p>Product Name: <input onChange={this.handleChangeName} /></p>
-                <p>Price: <input onChange={this.handleChangePrice}/></p>
-                <button onClick= {this.clearInputBoxes}>Cancel</button>
+            <div className= 'form-box'>
+                <p>Image URL: <input onChange= {this.handleChangeImg} value={this.state.img}/></p>
+                <p>Product Name: <input onChange={this.handleChangeName} value= {this.state.name}/></p>
+                <p>Price: <input onChange={this.handleChangePrice} value={this.state.price}/></p>
+                <button type='button' onClick= {this.clearInputBoxes}>Cancel</button>
                 <button onClick={this.postProduct} >Add to Inventory</button>
             </div>
         )

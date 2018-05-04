@@ -16,6 +16,8 @@ massive(process.env.CONNECTION_STRING).then(dbInstance=>{
 }).catch(err=>console.log(err))
 
 
+app.get('/api/inventory', controller.getInventory)
+
 
 
 app.listen(port, ()=>console.log(`Listening on port ${port}`))

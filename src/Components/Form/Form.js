@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 export default class Form extends Component{
     constructor(){
@@ -27,7 +28,11 @@ export default class Form extends Component{
         this.setState({imgurl: e.target.value})
     }
 
-    postProduct(){}
+    postProduct(){
+        axios.post('/api/product/').then(()=>
+        this.props.inventoryGetAll())
+        this.clearInputBoxes()
+    }
 
     clearInputBoxes(e){
         this.setState({
